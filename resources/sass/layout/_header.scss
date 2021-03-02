@@ -1,41 +1,58 @@
 header {
-  margin-top: -10px;
-  background: $white;
+    margin-top: -10px;
+    background: $white;
 
-  h1 {
+    h1 {
     font-size: 12px;
     margin: 10px;
-  }
+    }
 
-  .navbar-brand {
+    .navbar-brand {
     color: $white;
-  }
+    }
 
-  .navbar {
+    .navbar {
     background: $thin-gray;
     border-color: $thin-gray;
-  }
+    }
 
-  .header {
+    .header {
     &-nav__logo {
-      width: 200px;
-      margin-top: -15px;
+        width: 200px;
+        margin-top: -15px;
     }
-  }
+    &-nav__drop-down {
+        background: $thin-gray;
+    }
+    }
 
-  #header {
+    #header {
     &-nav {
-      &__home {
+        &__home {
         color: $white;
-      }
+        }
 
-      &__login {
+        &__login {
         color: $white;
-      }
+        }
 
-      &__register {
+        &__register {
         color: $white;
-      }
+        }
+
+        &__name {
+        color: $white;
+        }
+
+        &__mypage {
+        color: $white;
+        margin: auto;
+        }
+
+        &__logout {
+        color: $white;
+        margin: auto;
+        }
     }
-  }
+    }
 }

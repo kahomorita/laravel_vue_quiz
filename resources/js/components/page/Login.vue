@@ -6,14 +6,12 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
             <div class="panel-heading text-center">ログイン</div>
-
             <div class="form-group has-error" v-if="errors.length !== 0">
-            <div class="alert alert-danger text-center">
+                <div class="alert alert-danger text-center">
                 ログイン時にエラーが発生しました
                 <div v-for="(error, key, index) in errors" :key="index">{{error}}</div>
+                </div>
             </div>
-            </div>
-
             <div class="panel-body">
                 <ValidationObserver
                 class="form-horizontal"
@@ -21,6 +19,7 @@
                 action="/login"
                 id="login"
                 method="post"
+                @submit.prevent="login()"
                 tag="form"
                 v-slot="{ invalid }"
                 >

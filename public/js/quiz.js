@@ -284,8 +284,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -302,9 +300,13 @@ __webpack_require__.r(__webpack_exports__);
       commentary: "",
       correctAnswerNo: 0,
       isCorrect: false,
+      //正解かどうか
       isMistake: false,
+      //間違いかどうか
       isAlreadyAnswered: false,
+      //回答済みかどうか
       isQuizFinish: false,
+      //クイズが終了したかどうか
       score: 0,
       quizNumber: 1,
       categoryName: "",
@@ -315,27 +317,41 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     var categories = this.$route.query.categories;
+    var loader = this.$loading.show();
     this.$http.get("/api/quiz?categories=".concat(categories)).then(function (response) {
       _this.quizData = response.data;
 
-      _this.findNextQuiz(0);
+      if (_this.quizData.length < 10) {
+        alert("クイズ10問以下のため、初期画面に戻ります。カテゴリーを選択し直してください");
+        location.href = "/";
+      } else {
+        _this.findNextQuiz(0);
 
-      console.log(_this.quizData);
+        loader.hide();
+      }
+    }) // 例外発生時も初期画面戻す
+    ["catch"](function (error) {
+      alert("クイズの読み込みに失敗したため、初期画面に戻ります");
+      location.href = "/";
     });
   },
   methods: {
     goAnswer: function goAnswer(selectAnswerNum) {
       if (selectAnswerNum === 0) {
+        // selectAnswerNumが0の場合は、click 「正解を表示する」ボタンのクリック
         this.isCorrect = false;
         this.isMistake = false;
       } else if (selectAnswerNum === Number(this.correctAnswerNo)) {
+        // 正解を押した場合
         this.isCorrect = true;
         this.isMistake = false;
         this.score += 1;
       } else {
+        // 不正解の場合
         this.isMistake = true;
         this.isCorrect = false;
-      }
+      } // 回答済み
+
 
       this.isAlreadyAnswered = true;
 
@@ -344,6 +360,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     findNextQuiz: function findNextQuiz(quizNumber) {
+      window.scroll(0, 0);
       this.title = this.quizData[quizNumber].title;
       this.answers = [this.quizData[quizNumber].answer.answer_1, this.quizData[quizNumber].answer.answer_2, this.quizData[quizNumber].answer.answer_3, this.quizData[quizNumber].answer.answer_4];
       this.commentary = this.quizData[quizNumber].answer.commentary;
@@ -351,6 +368,7 @@ __webpack_require__.r(__webpack_exports__);
       this.categoryName = this.quizData[quizNumber].category.name;
     },
     goNextQuiz: function goNextQuiz() {
+      // 次の問題へをクリック
       if (this.quizNumber >= 10) {
         this.endQuiz();
       } else {
@@ -39661,21 +39679,27 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.isQuizFinish
-                  ? _c(
-                      "button",
+                _c(
+                  "button",
+                  {
+                    directives: [
                       {
-                        staticClass: "center-block",
-                        attrs: {
-                          type: "button",
-                          "data-toggle": "modal",
-                          "data-target": "#modal-result"
-                        },
-                        on: { click: _vm.showResult }
-                      },
-                      [_vm._v("結果を見る")]
-                    )
-                  : _vm._e()
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.isQuizFinish,
+                        expression: "isQuizFinish"
+                      }
+                    ],
+                    staticClass: "center-block",
+                    attrs: {
+                      type: "button",
+                      "data-toggle": "modal",
+                      "data-target": "#modal-result"
+                    },
+                    on: { click: _vm.showResult }
+                  },
+                  [_vm._v("結果を見る")]
+                )
               ])
             ]),
             _vm._v(" "),

@@ -47,6 +47,8 @@ methods: {
     });
     }
 },
+
+
 beforeRouteUpdate(to, from, next) {
     next();
     this.initial = this.$route.query.initial;

@@ -16,6 +16,7 @@ Route::group([
     $router->resource('/categories', CategoryController::class);
     $router->resource('/users', UserController::class);
     $router->resource('/quizzes', QuizController::class);
+    $router->resource('/keywords', KeywordController::class);
 
 
 

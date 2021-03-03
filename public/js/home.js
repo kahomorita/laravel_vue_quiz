@@ -39360,7 +39360,7 @@ var render = function() {
                           }
                         }),
                         _vm._v(
-                          "\n              " +
+                          "\n                " +
                             _vm._s(cate.name) +
                             " \n            "
                         )
@@ -39368,7 +39368,9 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("div", [
-                      _vm._v("\n              全項目チェック\n              "),
+                      _vm._v(
+                        "\n                全項目チェック\n                "
+                      ),
                       _c(
                         "button",
                         {
@@ -39566,7 +39568,7 @@ var staticRenderFns = [
           staticClass: "home-quiz__introduction-h2-logo",
           attrs: { src: "/images/what-is-mark.png" }
         }),
-        _vm._v("4 Answers Quizとは?\n          ")
+        _vm._v("4 Answers Quizとは?\n            ")
       ]),
       _vm._v(" "),
       _c("p", [
@@ -39589,7 +39591,7 @@ var staticRenderFns = [
         staticClass: "home-quiz__setting-h2-logo",
         attrs: { src: "/images/directory-icon.png" }
       }),
-      _vm._v("出題設定\n          ")
+      _vm._v("出題設定\n            ")
     ])
   },
   function() {
@@ -39601,7 +39603,7 @@ var staticRenderFns = [
         staticClass: "home-quiz__ranking-h2-logo",
         attrs: { src: "/images/graph-icon.png" }
       }),
-      _vm._v("ランキング\n          ")
+      _vm._v("ランキング\n            ")
     ])
   },
   function() {
@@ -39613,7 +39615,7 @@ var staticRenderFns = [
         staticClass: "home__notice-h2-logo",
         attrs: { src: "/images/news-icon.png" }
       }),
-      _vm._v("お知らせ情報\n          ")
+      _vm._v("お知らせ情報\n            ")
     ])
   }
 ]

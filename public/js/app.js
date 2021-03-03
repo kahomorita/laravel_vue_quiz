@@ -2869,13 +2869,9 @@ __webpack_require__.r(__webpack_exports__);
       commentary: "",
       correctAnswerNo: 0,
       isCorrect: false,
-      //正解かどうか
       isMistake: false,
-      //間違いかどうか
       isAlreadyAnswered: false,
-      //回答済みかどうか
       isQuizFinish: false,
-      //クイズが終了したかどうか
       score: 0,
       quizNumber: 1,
       categoryName: "",
@@ -2898,8 +2894,7 @@ __webpack_require__.r(__webpack_exports__);
 
         loader.hide();
       }
-    }) // 例外発生時も初期画面戻す
-    ["catch"](function (error) {
+    })["catch"](function (error) {
       alert("クイズの読み込みに失敗したため、初期画面に戻ります");
       location.href = "/";
     });
@@ -2907,20 +2902,16 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     goAnswer: function goAnswer(selectAnswerNum) {
       if (selectAnswerNum === 0) {
-        // selectAnswerNumが0の場合は、click 「正解を表示する」ボタンのクリック
         this.isCorrect = false;
         this.isMistake = false;
       } else if (selectAnswerNum === Number(this.correctAnswerNo)) {
-        // 正解を押した場合
         this.isCorrect = true;
         this.isMistake = false;
         this.score += 1;
       } else {
-        // 不正解の場合
         this.isMistake = true;
         this.isCorrect = false;
-      } // 回答済み
-
+      }
 
       this.isAlreadyAnswered = true;
 
@@ -2937,7 +2928,6 @@ __webpack_require__.r(__webpack_exports__);
       this.categoryName = this.quizData[quizNumber].category.name;
     },
     goNextQuiz: function goNextQuiz() {
-      // 次の問題へをクリック
       if (this.quizNumber >= 10) {
         this.endQuiz();
       } else {
@@ -60327,7 +60317,7 @@ var render = function() {
                           }
                         }),
                         _vm._v(
-                          "\n              " +
+                          "\n                " +
                             _vm._s(cate.name) +
                             " \n            "
                         )
@@ -60335,7 +60325,9 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("div", [
-                      _vm._v("\n              全項目チェック\n              "),
+                      _vm._v(
+                        "\n                全項目チェック\n                "
+                      ),
                       _c(
                         "button",
                         {
@@ -60533,7 +60525,7 @@ var staticRenderFns = [
           staticClass: "home-quiz__introduction-h2-logo",
           attrs: { src: "/images/what-is-mark.png" }
         }),
-        _vm._v("4 Answers Quizとは?\n          ")
+        _vm._v("4 Answers Quizとは?\n            ")
       ]),
       _vm._v(" "),
       _c("p", [
@@ -60556,7 +60548,7 @@ var staticRenderFns = [
         staticClass: "home-quiz__setting-h2-logo",
         attrs: { src: "/images/directory-icon.png" }
       }),
-      _vm._v("出題設定\n          ")
+      _vm._v("出題設定\n            ")
     ])
   },
   function() {
@@ -60568,7 +60560,7 @@ var staticRenderFns = [
         staticClass: "home-quiz__ranking-h2-logo",
         attrs: { src: "/images/graph-icon.png" }
       }),
-      _vm._v("ランキング\n          ")
+      _vm._v("ランキング\n            ")
     ])
   },
   function() {
@@ -60580,7 +60572,7 @@ var staticRenderFns = [
         staticClass: "home__notice-h2-logo",
         attrs: { src: "/images/news-icon.png" }
       }),
-      _vm._v("お知らせ情報\n          ")
+      _vm._v("お知らせ情報\n            ")
     ])
   }
 ]
